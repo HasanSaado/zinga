@@ -1,0 +1,14 @@
+com/zinga/MainActivity.java
+ com.zinga.MainActivity
+com/zinga/ReactNativeFlipper.java
+ com.zinga.ReactNativeFlipper
+ com.zinga.ReactNativeFlipper$1
+ com.zinga.ReactNativeFlipper$2
+ com.zinga.ReactNativeFlipper$2$1
+com/zinga/MainApplication.java
+ com.zinga.MainApplication
+ com.zinga.MainApplication$1
+com/zinga/BuildConfig.java
+ com.zinga.BuildConfig
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
