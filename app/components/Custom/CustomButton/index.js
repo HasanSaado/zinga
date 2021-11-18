@@ -19,7 +19,8 @@ function CustomButton({
   color,
   fontWeight,
   type,
-  image
+  image,
+  fontSize
 }) {
 
   /**
@@ -42,7 +43,7 @@ function CustomButton({
                 { borderColor: borderColor, height: height }
               ]}
             >
-              <Text style={[styles.text, { color: color, fontWeight: fontWeight }]}>
+              <Text style={[styles.text, { color: color, fontWeight: fontWeight, fontSize: fontSize ? fontSize : 21 }]}>
                 {text}
               </Text>
             </LinearGradient>
@@ -59,7 +60,7 @@ function CustomButton({
             onPress={onPress}
           >
             <Image style={styles.image} source={image} />
-            <Text style={[styles.text, { color: color, fontWeight: fontWeight }]}>{text}</Text>
+            <Text style={[styles.text, { color: color, fontWeight: fontWeight, fontSize: fontSize ? fontSize : 21 }]}>{text}</Text>
           </TouchableOpacity>
         );
         break;
@@ -72,7 +73,7 @@ function CustomButton({
             ]}
             onPress={onPress}
           >
-            <Text style={[styles.text, { color: color, fontWeight: fontWeight }]}>{text}</Text>
+            <Text style={[styles.text, { color: color, fontWeight: fontWeight, fontSize: fontSize ? fontSize : 21 }]}>{text}</Text>
           </TouchableOpacity>
         );
     }
@@ -105,7 +106,6 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 21,
     fontFamily: "QuicksandBold",
   },
 

@@ -57,11 +57,10 @@ const styles = StyleSheet.create({
   notification: {
     fontSize: 12,
     color: "#4D4946",
-    fontFamily: "QuicksandLigh"
+    fontFamily: "QuicksandLight"
   },
 
   notificationName: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
   }
 });

@@ -4,7 +4,9 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  SafeAreaView,
+  ScrollView
 } from "react-native";
 
 // Components
@@ -30,41 +32,42 @@ function Verification({ navigation }) {
    * 
    */
   return (
-    <View style={styles.container}>
-      <View style={styles.welcomeText}>
-        <Text style={styles.titleText}>
-          Verification
-        </Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('../../assets/img/verify-img.png')}
-          style={styles.image}
-        />
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>
-          We will send you a <Text style={styles.textVerify}>Verification Code</Text> to your phone number
-        </Text>
-      </View>
-      <View style={styles.verifyButton}>
-        <CustomButton
-          text="Verify"
-          height={48}
-          onPress={onVerifyPress}
-          color="#4D4D4D"
-          fontWeight="bold"
-          borderColor="#4D4D4D"
-          backgroundColor="#fff"
-        />
-        <Text
-          style={styles.resendCodeText}
-          onPress={handleResendPress}
-        >
-          Resend Code
-        </Text>
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.main}>
+        <View style={styles.welcomeText}>
+          <Text style={styles.titleText}>
+            Verification
+          </Text>
+        </View>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require('../../assets/img/verify-img.png')}
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>
+            We will send you a <Text style={styles.textVerify}>Verification Code</Text> to your phone number
+          </Text>
+        </View>
+        <View style={styles.verifyButton}>
+          <CustomButton
+            text="Verify"
+            height={52}
+            onPress={onVerifyPress}
+            color="#4D4D4D"
+            borderColor="#4D4D4D"
+            backgroundColor="#fff"
+          />
+          <Text
+            style={styles.resendCodeText}
+            onPress={handleResendPress}
+          >
+            Resend Code
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -77,6 +80,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+
+  main: {
     paddingLeft: 50,
     paddingRight: 50
   },
@@ -90,7 +96,6 @@ const styles = StyleSheet.create({
     color: "#4D4D4D",
     textAlign: "center",
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 30
   },
 
@@ -100,7 +105,6 @@ const styles = StyleSheet.create({
 
   resendCodeText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 12,
     textDecorationLine: "underline",
     marginTop: 10,
@@ -133,6 +137,5 @@ const styles = StyleSheet.create({
 
   textVerify: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
   }
 });

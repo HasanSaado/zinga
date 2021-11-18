@@ -15,6 +15,10 @@ function CustomInput({
   secureTextEntry,
   onChangeText,
   color,
+  multiline,
+  numberOfLines,
+  fontFamily,
+  width
 }) {
 
   /**
@@ -27,6 +31,8 @@ function CustomInput({
           borderColor: border, 
           borderBottomWidth: borderWidth, 
           color: color ? color : "#4D4D4D",
+          fontFamily: fontFamily ? fontFamily : "QuicksandRegular",
+          width: width ? width : "100%"
         }]}
         placeholderTextColor={color ? color : "#4D4D4D"}
         placeholder={placeholder}
@@ -35,6 +41,8 @@ function CustomInput({
         keyboardType={keyboardType}
         secureTextEntry={secureTextEntry}
         onChangeText={onChangeText}
+        multiline={multiline}
+        numberOfLines={numberOfLines}
       />
     </View>
   );
@@ -48,7 +56,6 @@ export default CustomInput;
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    fontFamily: 'QuicksandRegular',
     fontSize: 17,
     marginBottom: 20
   }

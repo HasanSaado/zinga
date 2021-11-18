@@ -34,7 +34,7 @@ function Settings({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.main}>
-          <Text onPress={onPress} style={styles.textLink}>
+          <Text onPress={() => navigation.navigate('ChangePassword')} style={styles.textLink}>
             Change Password
           </Text>
           <Text onPress={() => navigation.navigate('WalletSettings')} style={styles.textLink}>
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
 
   textLink: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 15,
     textDecorationLine: "underline",
     color: "#FF7542",

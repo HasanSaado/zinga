@@ -9,7 +9,8 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  ScrollView
+  ScrollView,
+  SafeAreaView
 } from "react-native";
 
 // Components
@@ -39,62 +40,62 @@ function Login({ navigation }) {
    * 
    */
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <ScrollView>
-          <View style={styles.welcomeText}>
-            <Text style={styles.baseText}>
-              <Text style={styles.titleText}>
-                Welcome Back
-                {"\n"}
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <ScrollView>
+            <View style={styles.welcomeText}>
+              <Text style={styles.baseText}>
+                <Text style={styles.titleText}>
+                  Welcome Back
+                  {"\n"}
+                </Text>
+                <Text style={styles.textName}>Patricia</Text>
               </Text>
-              <Text style={styles.textName}>Patricia</Text>
-            </Text>
-          </View>
-          <View style={styles.imageContainer}>
-            <Image
-              source={require('../../assets/img/user-img.png')}
-              style={styles.userImage}
-            />
-          </View>
-          <View style={styles.loginForm}>
-            <Text style={styles.loginTitle}>Log In</Text>
-            <CustomInput
-              placeholder="Email"
-              border="#4D4D4D"
-              borderWidth={2}
-              onChangeText={setEmail}
-            />
-            <CustomInput
-              placeholder="Password"
-              border="#4D4D4D"
-              borderWidth={2}
-              onChangeText={setPassword}
-            />
-          </View>
-          <View style={styles.loginButton}>
-            <CustomButton
-              text="Log In"
-              height={48}
-              onPress={onPress}
-              color="#fff"
-              fontWeight="bold"
-              borderColor="#FEB130"
-              onPress={onPress}
-              type="gradient"
-            />
-            <Text style={styles.registerText}>
-              <Text style={styles.accountText}>Don't have an account? </Text>
-              <Text style={styles.joinNowText} onPress={handleJoinPress}>Join Now</Text>
-            </Text>
-            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-          </View>
-        </ScrollView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+            </View>
+            <View style={styles.imageContainer}>
+              <Image
+                source={require('../../assets/img/user-img.png')}
+                style={styles.userImage}
+              />
+            </View>
+            <View style={styles.loginForm}>
+              <Text style={styles.loginTitle}>Log In</Text>
+              <CustomInput
+                placeholder="Email"
+                border="#4D4D4D"
+                borderWidth={2}
+                onChangeText={setEmail}
+              />
+              <CustomInput
+                placeholder="Password"
+                border="#4D4D4D"
+                borderWidth={2}
+                onChangeText={setPassword}
+              />
+            </View>
+            <View style={styles.loginButton}>
+              <CustomButton
+                text="Log In"
+                height={52}
+                onPress={onPress}
+                color="#fff"
+                borderColor="#FEB130"
+                onPress={onPress}
+                type="gradient"
+              />
+              <Text style={styles.registerText}>
+                <Text style={styles.accountText}>Don't have an account? </Text>
+                <Text style={styles.joinNowText} onPress={handleJoinPress}>Join Now</Text>
+              </Text>
+              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+            </View>
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
     fontFamily: "QuicksandBold",
     fontSize: 30,
     textAlign: "center",
-    fontWeight: "bold"
   },
 
   titleText: {
@@ -151,7 +151,6 @@ const styles = StyleSheet.create({
     fontFamily: 'QuicksandBold',
     color: '#FEB130',
     fontSize: 43,
-    fontWeight: 'bold',
     marginBottom: 20
   },
 
@@ -171,12 +170,10 @@ const styles = StyleSheet.create({
 
   joinNowText: {
     color: "#FF7542",
-    fontWeight: "bold",
   },
 
   forgotPasswordText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 12,
     textDecorationLine: "underline",
     marginTop: 10,

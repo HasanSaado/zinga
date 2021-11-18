@@ -160,8 +160,7 @@ function WalletSettings({ navigation }) {
               backgroundColor="#fff"
               borderColor="#4D4D4D"
               color="#000"
-              fontWeight="bold"
-              height={50}
+              height={52}
               onPress={handleSavePress}
             />
           </View>
@@ -206,13 +205,12 @@ const styles = StyleSheet.create({
 
   setLimitText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 17,
     color: "#4D4946"
   },
 
   notifiedText: {
-    fontFamily: "QuicksandBold",
+    fontFamily: "QuicksandRegular",
     fontSize: 15,
     color: "#7B7B7B"
   },
@@ -226,13 +224,12 @@ const styles = StyleSheet.create({
 
   autoRechargeText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 17,
     color: "#4D4946"
   },
 
   rechargeText: {
-    fontFamily: "QuicksandBold",
+    fontFamily: "QuicksandRegular",
     fontSize: 15,
     color: "#7B7B7B",
     marginTop: 10
@@ -244,7 +241,6 @@ const styles = StyleSheet.create({
 
   selectText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 29,
     color: "#4D4D4D"
   },
@@ -276,13 +272,11 @@ const styles = StyleSheet.create({
 
   tokenNumber: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 18,
   },
 
   price: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 26,
     marginTop: 10
   }

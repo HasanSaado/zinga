@@ -4,7 +4,9 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  ScrollView,
+  SafeAreaView
 } from "react-native";
 
 // Components
@@ -31,7 +33,8 @@ function Confirmation({ navigation }) {
    * 
    */
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.main}>
       <View style={styles.welcomeText}>
         <Text style={styles.titleText}>
           Confirmation
@@ -59,10 +62,9 @@ function Confirmation({ navigation }) {
       <View style={styles.verifyButton}>
         <CustomButton
           text="Verify"
-          height={48}
+          height={52}
           onPress={onVerifyPress}
           color="#4D4D4D"
-          fontWeight="bold"
           borderColor="#4D4D4D"
           backgroundColor="#fff"
         />
@@ -73,7 +75,8 @@ function Confirmation({ navigation }) {
           Resend Code
         </Text>
       </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -86,6 +89,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+
+  main: {
     paddingLeft: 45,
     paddingRight: 45
   },
@@ -99,17 +105,16 @@ const styles = StyleSheet.create({
     color: "#4D4D4D",
     textAlign: "center",
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 30
   },
 
   verifyButton: {
     marginTop: 20,
+    marginBottom: 20
   },
 
   resendCodeText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 12,
     textDecorationLine: "underline",
     marginTop: 10,
@@ -140,7 +145,6 @@ const styles = StyleSheet.create({
 
   textVerify: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
   },
 
   codeInput: {

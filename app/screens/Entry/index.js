@@ -4,13 +4,15 @@ import {
   StyleSheet,
   View,
   Image,
-  ImageBackground
+  ImageBackground,
+  SafeAreaView,
+  ScrollView
 } from "react-native";
 
 // Components
 import CustomButton from '../../components/Custom/CustomButton';
 
-function Entry({ navigation }) {
+function Entry({ navigation, route }) {
 
   /**
    * 
@@ -30,44 +32,42 @@ function Entry({ navigation }) {
    * 
    */
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <ImageBackground
+          source={require('../../assets/img/bg-bw.png')}
+          resizeMode={'cover'}
+          style={styles.backgroundImage}
+        >
 
-      <ImageBackground
-        source={require('../../assets/img/bg-bw.png')}
-        resizeMode={'cover'}
-        style={styles.backgroundImage}
-      >
+          <View style={styles.imageContainer}>
+            <Image source={require('../../assets/img/logo-full-color.png')} style={styles.image} />
 
-        <View style={styles.imageContainer}>
-          <Image source={require('../../assets/img/logo-full-color.png')} style={styles.image} />
+            <Image source={require('../../assets/img/zinga-text-black.png')} style={styles.textImage} />
+          </View>
 
-          <Image source={require('../../assets/img/zinga-text-black.png')} style={styles.textImage} />
-        </View>
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              text="Sign Up"
+              backgroundColor="#fff"
+              borderColor="#FF527C"
+              color="#FF527C"
+              height={53}
+              onPress={onPressRegister}
+            />
 
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            text="Sign Up"
-            backgroundColor="#fff"
-            borderColor="#FF527C"
-            color="#FF527C"
-            fontWeight="bold"
-            height={53}
-            onPress={onPressRegister}
-          />
-
-          <CustomButton
-            text="Login"
-            backgroundColor="#fff"
-            borderColor="#FF527C"
-            color="#FF527C"
-            fontWeight="bold"
-            height={53}
-            onPress={onPressLogin}
-          />
-        </View>
-      </ImageBackground>
-
-    </View>
+            <CustomButton
+              text="Login"
+              backgroundColor="#fff"
+              borderColor="#FF527C"
+              color="#FF527C"
+              height={53}
+              onPress={onPressLogin}
+            />
+          </View>
+        </ImageBackground>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

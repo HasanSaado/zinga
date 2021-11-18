@@ -39,10 +39,8 @@ function CardConfirmation({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.main}>
-        <View style={styles.thankYou}>
           <Text style={styles.thankYou}>Thank you for your purchase
             you now have 15 tokens</Text>
-            </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -68,5 +66,10 @@ const styles = StyleSheet.create({
 
   thankYou: {
     textAlignVertical: "center",
+    textAlign: "center",
+    marginTop: 200,
+    fontFamily: "QuicksandBold",
+    fontSize: 21,
+    color: "#4D4D4D"
   }
 });

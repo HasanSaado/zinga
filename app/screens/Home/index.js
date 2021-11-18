@@ -6,6 +6,7 @@ import {
   Image,
   ImageBackground
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Components
 import CustomButton from '../../components/Custom/CustomButton';
@@ -15,8 +16,13 @@ function Home({ navigation }) {
   /**
    * 
    */
-  const onPress = () => {
-    navigation.navigate('Entry');
+  const onPress = async (value) => {
+    try {
+      await AsyncStorage.setItem('userType', value);
+      navigation.navigate('Entry');
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   /**
@@ -42,9 +48,8 @@ function Home({ navigation }) {
             backgroundColor="#fff"
             borderColor="#fff"
             color="#FF527C"
-            fontWeight="bold"
             height={53}
-            onPress={onPress}
+            onPress={() => onPress('admin')}
           />
 
           <CustomButton
@@ -52,9 +57,8 @@ function Home({ navigation }) {
             backgroundColor="#fff"
             borderColor="#fff"
             color="#FF527C"
-            fontWeight="bold"
             height={53}
-            onPress={onPress}
+            onPress={() => onPress('seeker')}
           />
         </View>
       </ImageBackground>
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
 
   imageContainer: {
     alignItems: "center",
-  }, 
+  },
 
   textImage: {
     top: 150,

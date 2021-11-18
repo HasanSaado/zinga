@@ -11,6 +11,7 @@ import {
   Switch
 } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
 
 // Components
 import CustomButton from '../../components/Custom/CustomButton';
@@ -101,7 +102,6 @@ function Checkout({ navigation }) {
               backgroundColor="#fff"
               borderColor="#4D4D4D"
               color="#000"
-              fontWeight="bold"
               height={50}
               onPress={handleConfirmPress}
             />
@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
 
   cardName: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 25,
     color: "#fff"
   },

@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  SafeAreaView,
+  ScrollView
 } from "react-native";
 import RadioForm from 'react-native-simple-radio-button';
 
@@ -41,79 +43,80 @@ function Register({ navigation }) {
    * 
    */
   return (
-    <View style={styles.container}>
-      <View style={styles.welcomeText}>
-        <Text style={styles.titleText}>
-          Create Account
-        </Text>
-      </View>
-      <View style={styles.registerForm}>
-        <CustomInput
-          placeholder="First Name"
-          border="#4D4D4D"
-          borderWidth={1}
-        />
-        <CustomInput
-          placeholder="Last Name"
-          border="#4D4D4D"
-          borderWidth={1}
-        />
-        <CustomInput
-          placeholder="Email"
-          border="#4D4D4D"
-          borderWidth={1}
-        />
-        <CustomInput
-          placeholder="Phone Number"
-          border="#4D4D4D"
-          borderWidth={1}
-          keyboardType="numeric"
-        />
-        <CustomInput
-          placeholder="Password"
-          border="#4D4D4D"
-          borderWidth={1}
-          secureTextEntry={true}
-        />
-        <CustomInput
-          placeholder="Confirm Password"
-          border="#4D4D4D"
-          borderWidth={1}
-          secureTextEntry={true}
-        />
-      </View>
-      <View>
-        <RadioForm
-          radio_props={radio_props}
-          initial={0}
-          formHorizontal={true}
-          labelHorizontal={true}
-          buttonColor={'#FF7542'}
-          selectedButtonColor={'#FF7542'}
-          animation={true}
-          onPress={(value) => setSelected(value)}
-          style={styles.radioButton}
-          labelStyle={{ fontSize: 12, color: '#4D4D4D', fontFamily: 'QuicksandBold' }}
-        />
-      </View>
-      <View style={styles.registerButton}>
-        <CustomButton
-          text="Sign Up"
-          height={48}
-          onPress={handleSignUpPress}
-          color="#fff"
-          fontWeight="bold"
-          borderColor="#FEB130"
-          type="gradient"
-        />
-        <Text
-          style={styles.forgotPasswordText}
-          onPress={handleLoginPress}
-        >
-          Sign In
-        </Text>
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.main}>
+        <View style={styles.welcomeText}>
+          <Text style={styles.titleText}>
+            Create Account
+          </Text>
+        </View>
+        <View style={styles.registerForm}>
+          <CustomInput
+            placeholder="First Name"
+            border="#4D4D4D"
+            borderWidth={1}
+          />
+          <CustomInput
+            placeholder="Last Name"
+            border="#4D4D4D"
+            borderWidth={1}
+          />
+          <CustomInput
+            placeholder="Email"
+            border="#4D4D4D"
+            borderWidth={1}
+          />
+          <CustomInput
+            placeholder="Phone Number"
+            border="#4D4D4D"
+            borderWidth={1}
+            keyboardType="numeric"
+          />
+          <CustomInput
+            placeholder="Password"
+            border="#4D4D4D"
+            borderWidth={1}
+            secureTextEntry={true}
+          />
+          <CustomInput
+            placeholder="Confirm Password"
+            border="#4D4D4D"
+            borderWidth={1}
+            secureTextEntry={true}
+          />
+        </View>
+        <View>
+          <RadioForm
+            radio_props={radio_props}
+            initial={0}
+            formHorizontal={true}
+            labelHorizontal={true}
+            buttonColor={'#FF7542'}
+            selectedButtonColor={'#FF7542'}
+            animation={true}
+            onPress={(value) => setSelected(value)}
+            style={styles.radioButton}
+            labelStyle={{ fontSize: 12, color: '#4D4D4D', fontFamily: 'QuicksandBold' }}
+          />
+        </View>
+        <View style={styles.registerButton}>
+          <CustomButton
+            text="Sign Up"
+            height={52}
+            onPress={handleSignUpPress}
+            color="#fff"
+            borderColor="#FEB130"
+            type="gradient"
+          />
+          <Text
+            style={styles.forgotPasswordText}
+            onPress={handleLoginPress}
+          >
+            Sign In
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -126,6 +129,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+
+  main: {
     paddingLeft: 50,
     paddingRight: 50
   },
@@ -139,7 +145,6 @@ const styles = StyleSheet.create({
     color: "#4D4D4D",
     textAlign: "center",
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 30
   },
 
@@ -153,7 +158,6 @@ const styles = StyleSheet.create({
 
   forgotPasswordText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 12,
     textDecorationLine: "underline",
     marginTop: 10,

@@ -132,7 +132,6 @@ function SelectTokens({ navigation }) {
               backgroundColor="#fff"
               borderColor="#4D4D4D"
               color="#000"
-              fontWeight="bold"
               height={52}
               onPress={handleCheckoutPress}
             />
@@ -162,63 +161,8 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
 
-  formContainer: {
-    marginTop: 10
-  },
-
-  walletImage: {
-    height: 184,
-    width: 224,
-    marginTop: 20
-  },
-
-  setLimit: {
-    marginTop: 20
-  },
-
-  setLimitText: {
-    fontFamily: "QuicksandBold",
-    fontWeight: "bold",
-    fontSize: 17,
-    color: "#4D4946"
-  },
-
-  notifiedText: {
-    fontFamily: "QuicksandBold",
-    fontSize: 15,
-    color: "#7B7B7B"
-  },
-
-  autoRecharge: {
-    marginTop: 20,
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-
-  autoRechargeText: {
-    fontFamily: "QuicksandBold",
-    fontWeight: "bold",
-    fontSize: 17,
-    color: "#4D4946"
-  },
-
-  rechargeText: {
-    fontFamily: "QuicksandBold",
-    fontSize: 15,
-    color: "#7B7B7B",
-    marginTop: 10
-  },
-
   tokensContainer: {
     marginTop: 50
-  },
-
-  selectText: {
-    fontFamily: "QuicksandBold",
-    fontWeight: "bold",
-    fontSize: 29,
-    color: "#4D4D4D"
   },
 
   cardContainer: {
@@ -226,7 +170,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 15,
     padding: 15,
-
   },
 
   cardRow: {
@@ -248,13 +191,11 @@ const styles = StyleSheet.create({
 
   tokenNumber: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 18,
   },
 
   price: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 26,
     marginTop: 10
   }

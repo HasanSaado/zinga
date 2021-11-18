@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
 
   searchLabel: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 20,
     color: "#4D4946"
   },
@@ -129,7 +128,6 @@ const styles = StyleSheet.create({
 
   title: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 15,
     color: "#4D4946"
   },
@@ -154,7 +152,6 @@ const styles = StyleSheet.create({
 
   memberName: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 13,
     color: "#7B7B7B"
   },
@@ -167,7 +164,6 @@ const styles = StyleSheet.create({
 
   tokenNumber: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 17,
     color: "#FF527C"
   }

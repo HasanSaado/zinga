@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
 
   userName: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 30,
     color: "#4D4D4D"
   },
@@ -185,7 +184,6 @@ const styles = StyleSheet.create({
 
   tokensText: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 17,
     color: "#4D4D4D"
   },
@@ -219,7 +217,6 @@ const styles = StyleSheet.create({
 
   appNumber: {
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 17,
     color: "#4D4D4D"
   },

@@ -81,7 +81,6 @@ function EditProfile({ navigation }) {
               backgroundColor="#fff"
               borderColor="#4D4D4D"
               color="#000"
-              fontWeight="bold"
               height={50}
               onPress={onPress}
             />
@@ -126,7 +125,6 @@ const styles = StyleSheet.create({
   changePassword: {
     textAlign: "right",
     fontFamily: "QuicksandBold",
-    fontWeight: "bold",
     fontSize: 12,
     color: "#FF7542",
     textDecorationLine: "underline"
