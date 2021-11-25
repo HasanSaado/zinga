@@ -30,7 +30,6 @@ function Home({ navigation }) {
    */
   return (
     <View style={styles.container}>
-
       <ImageBackground
         source={require('../../assets/img/bg-gradient.png')}
         resizeMode={'cover'}
@@ -38,10 +37,8 @@ function Home({ navigation }) {
       >
         <View style={styles.imageContainer}>
           <Image source={require('../../assets/img/logo-white.png')} style={styles.image} />
-
           <Image source={require('../../assets/img/zinga-text.png')} style={styles.textImage} />
         </View>
-
         <View style={styles.buttonContainer}>
           <CustomButton
             text="Looking to hire ?"
@@ -51,7 +48,6 @@ function Home({ navigation }) {
             height={53}
             onPress={() => onPress('admin')}
           />
-
           <CustomButton
             text="Looking for a job ?"
             backgroundColor="#fff"
@@ -62,7 +58,6 @@ function Home({ navigation }) {
           />
         </View>
       </ImageBackground>
-
     </View>
   );
 }
@@ -73,7 +68,6 @@ export default Home;
  * 
  */
 const styles = StyleSheet.create({
-
   container: {
     flex: 1
   },

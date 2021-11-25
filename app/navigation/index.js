@@ -1,12 +1,13 @@
 // Libraries
 import React, { useState, useEffect } from 'react';
-import { View, Image, StyleSheet, Button } from 'react-native';
+import { View, Image, StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Stacks
-import Play from '@screens/Play';
+// Screens
+import Play from '../screens/Play';
 import Notifications from '../screens/Notifications';
 import UserProfile from '../screens/UserProfile';
 import Home from '../screens/Home';
@@ -22,7 +23,12 @@ import WalletSettings from '../screens/WalletSettings';
 import SelectTokens from '../screens/SelectTokens';
 import Checkout from '../screens/Checkout';
 import CardConfirmation from '../screens/CardConfirmation';
-import Jobs from '../screens/Jobs';
+import {
+  AdminJobs,
+  UserJobs,
+  JobApply,
+  JobConfirmation
+} from '../screens/Jobs';
 import SavedJobs from '../screens/SavedJobs';
 import ArchivedJobs from '../screens/ArchivedJobs';
 import CreateCompany from '../screens/CreateCompany';
@@ -44,7 +50,39 @@ import RegisterEmployee from '../screens/RegisterEmployee';
 import VerificationEmployee from '../screens/VerificationEmployee';
 import ConfirmationEmployee from '../screens/ConfirmationEmployee';
 import LandingEmployee from '../screens/LandingEmployee';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import {
+  Step1,
+  Step2,
+  Step3,
+  EditEmployeeProfile,
+  UploadVideo,
+  VideoConfirmation,
+  VideoTips
+} from '../screens/CreateProfile';
+
+import {
+  FollowedCompanies,
+  CompanyProfile
+} from '@screens/Company';
+
+import {
+  JobSeekerInterviews,
+  RejectInterview,
+  UpcomingInterviews,
+  CancelInterview,
+  InterviewHistory
+} from '@screens/Interview';
+
+import {
+  JobSeekerDashboard
+} from '@screens/Dashboard';
+
+import {
+  JobSeekerProfile
+} from '@screens/Profile';
+
+import PreferredLocation from '@screens/PreferredLocation';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -100,8 +138,78 @@ function ProfileStack() {
       <Tab.Screen name="EditJob" component={EditJob} options={{ title: 'Accountant' }} />
       <Tab.Screen name="CompanyJobs" component={CompanyJobs} options={{ title: "Zinga's Jobs" }} />
       <Tab.Screen name="JobPosting" component={JobPosting} options={{ title: 'Job Posting' }} />
-      <Tab.Screen name="Jobs" component={Jobs} options={{ headerShown: false }} />
+      <Tab.Screen name="Jobs" component={AdminJobs} options={{ headerShown: false }} />
       <Tab.Screen name="Profile" component={UserProfile} options={{ headerShown: false }} />
+    </Tab.Navigator>
+  );
+}
+
+function JobSeekerProfileStack() {
+
+  /**
+   * 
+   */
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, size }) => {
+          let iconName;
+
+          if (route.name === 'SeekerProfile') {
+            iconName = focused
+              ? require('../assets/img/profile-icon-active.png')
+              : require('../assets/img/profile-icon.png')
+          }
+          if (route.name === 'FollowedCompanies') {
+            iconName = focused
+              ? require('../assets/img/jobs-icon-active.png')
+              : require('../assets/img/jobs-icon.png')
+          }
+          if (route.name === 'JobSeekerDashboard') {
+            iconName = focused
+              ? require('../assets/img/dashboard-alt.png')
+              : require('../assets/img/dashboard2.png')
+          }
+          if (route.name === 'UserJobs') {
+            iconName = focused
+              ? require('../assets/img/briefcase-icon-active.png')
+              : require('../assets/img/briefcase-icon.png')
+          }
+          if (route.name === 'JobSeekerInterviews') {
+            iconName = focused
+              ? require('../assets/img/calendar-alt.png')
+              : require('../assets/img/calendar-icon.png')
+          }
+          return <Image source={iconName} size={size} style={styles.image} />;
+        },
+        tabBarShowLabel: false,
+        headerTitleStyle: {
+          fontFamily: 'QuicksandBold',
+          fontSize: 30,
+          color: '#4D4D4D'
+        },
+        headerTitleAlign: 'center',
+        headerShadowVisible: false
+      })}
+    >
+      <Tab.Screen name="JobSeekerInterviews" component={JobSeekerInterviews} options={{
+        title: 'Interviews'
+      }} />
+      <Tab.Screen name="FollowedCompanies" component={FollowedCompanies} options={{
+        title: 'Followed Companies'
+      }} />
+      <Tab.Screen name="UserJobs" component={UserJobs} options={{
+        title: 'Jobs',
+        headerRight: () => (
+          <Image
+            onPress={() => alert('filter')}
+            source={require('../assets/img/filter.png')}
+            style={styles.filter}
+          />
+        ),
+      }} />
+      <Tab.Screen name="JobSeekerDashboard" component={JobSeekerDashboard} options={{ headerShown: false }} />
+      <Tab.Screen name="SeekerProfile" component={JobSeekerProfile} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
@@ -119,13 +227,12 @@ function Navigator() {
         const value = await AsyncStorage.getItem('userType')
         if (value !== null) {
           setUserType(value);
-          console.log(userType);
         }
       } catch (e) {
         console.log(e);
       }
     })();
-  }, [])
+  }, []);
 
   /**
    * 
@@ -150,13 +257,10 @@ function Navigator() {
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
         <Stack.Screen name="Verification" component={Verification} options={{ headerShown: false }} />
         <Stack.Screen name="Confirmation" component={Confirmation} options={{ headerShown: false }} />
-        {userType === "admin" &&
-          <>
-            <Stack.Screen name="Play" component={Play} options={{ headerShown: false }} />
-            <Stack.Screen name="Notifications" component={Notifications} />
-          </>
-        }
+        <Stack.Screen name="Play" component={Play} options={{ headerShown: false }} />
+        <Stack.Screen name="Notifications" component={Notifications} />
         <Stack.Screen name="UserProfile" component={ProfileStack} options={{ headerShown: false }} />
+        <Stack.Screen name="JobSeekerProfile" component={JobSeekerProfileStack} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen
           name="TokensSpent"
@@ -336,6 +440,114 @@ function Navigator() {
             }
           }}
         />
+        <Stack.Screen
+          name="Step1"
+          component={Step1}
+          options={{
+            title: 'Create Profile'
+          }}
+        />
+        <Stack.Screen
+          name="Step2"
+          component={Step2}
+          options={{
+            title: 'Create Profile'
+          }}
+        />
+        <Stack.Screen
+          name="Step3"
+          component={Step3}
+          options={{
+            title: 'Job Functions'
+          }}
+        />
+        <Stack.Screen
+          name="EditEmployeeProfile"
+          component={EditEmployeeProfile}
+          options={({ route }) => ({ title: route.params.name })}
+        />
+        <Stack.Screen
+          name="UploadVideo"
+          component={UploadVideo}
+          options={{
+            title: 'Video CV'
+          }}
+        />
+        <Stack.Screen
+          name="VideoConfirmation"
+          component={VideoConfirmation}
+          options={{
+            title: 'Video CV'
+          }}
+        />
+        <Stack.Screen
+          name="VideoTips"
+          component={VideoTips}
+          options={{
+            title: 'Video CV'
+          }}
+        />
+        <Stack.Screen
+          name="PreferredLocation"
+          component={PreferredLocation}
+          options={{
+            title: 'Preferred Location'
+          }}
+        />
+        <Stack.Screen
+          name="JobApply"
+          component={JobApply}
+          options={{
+            title: ''
+          }}
+        />
+        <Stack.Screen
+          name="JobConfirmation"
+          component={JobConfirmation}
+          options={{
+            title: 'Confirmation'
+          }}
+        />
+        <Stack.Screen
+          name="RejectInterview"
+          component={RejectInterview}
+          options={{
+            title: 'Reject Request'
+          }}
+        />
+        <Stack.Screen
+          name="UpcomingInterviews"
+          component={UpcomingInterviews}
+          options={{
+            title: 'Interviews'
+          }}
+        />
+        <Stack.Screen
+          name="CancelInterview"
+          component={CancelInterview}
+          options={{
+            title: 'Cancel Interviews'
+          }}
+        />
+        <Stack.Screen
+          name="InterviewHistory"
+          component={InterviewHistory}
+          options={{
+            title: 'Interviews'
+          }}
+        />
+        <Stack.Screen
+          name="CompanyProfile"
+          component={CompanyProfile}
+          options={{
+            title: '',
+            headerRight: () => (
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Unfollow</Text>
+              </TouchableOpacity>
+            ),
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -352,5 +564,29 @@ const styles = StyleSheet.create({
   filterIcon: {
     height: 19,
     width: 28.6
+  },
+
+  filter: {
+    height: 23.32,
+    width: 23.32,
+    marginRight: 30
+  },
+
+  button: {
+    borderColor: "#FF527C",
+    borderWidth: 1,
+    borderRadius: 5,
+    width: 76,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 24,
+    marginTop: 7,
+    marginRight: 13
+  },
+
+  buttonText: {
+    color: "#FF527C",
+    fontFamily: "QuicksandRegular",
+    fontSize: 15,
   }
 });

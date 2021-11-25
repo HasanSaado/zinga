@@ -1,5 +1,5 @@
 // Libraries
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -7,14 +7,38 @@ import {
   ImageBackground,
   TouchableOpacity
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function Play({ navigation }) {
+
+  // Const
+  const [userType, setUserType] = useState('');
+
+  /**
+   * 
+   */
+  useEffect(() => {
+    (async function () {
+      try {
+        const value = await AsyncStorage.getItem('userType')
+        if (value !== null) {
+          setUserType(value);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, []);
 
   /**
    * 
    */
   const onPressPlay = () => {
-    navigation.navigate('UserProfile');
+    if ('seeker' === userType) {
+      navigation.navigate('Step1');
+    } else {
+      navigation.navigate('UserProfile');
+    }
   }
 
   /**

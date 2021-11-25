@@ -20,7 +20,9 @@ function CustomButton({
   fontWeight,
   type,
   image,
-  fontSize
+  fontSize,
+  imageWidth,
+  imageHeight
 }) {
 
   /**
@@ -61,6 +63,22 @@ function CustomButton({
           >
             <Image style={styles.image} source={image} />
             <Text style={[styles.text, { color: color, fontWeight: fontWeight, fontSize: fontSize ? fontSize : 21 }]}>{text}</Text>
+          </TouchableOpacity>
+        );
+        break;
+      case 'textImage':
+        return (
+          <TouchableOpacity
+            style={[
+              styles.button,
+              { backgroundColor: backgroundColor, borderColor: borderColor, height: height }
+            ]}
+            onPress={onPress}
+          >
+            <View style={styles.row}>
+              <Text style={[styles.text, { color: color, fontWeight: fontWeight, fontSize: fontSize ? fontSize : 21 }]}>{text} </Text>
+              <Image style={{ width: imageWidth, height: imageHeight, marginTop: 3}} source={image} />
+            </View>
           </TouchableOpacity>
         );
         break;
@@ -112,5 +130,10 @@ const styles = StyleSheet.create({
   image: {
     height: 25,
     width: 30
+  },
+
+  row: {
+    flex: 1,
+    flexDirection: "row"
   }
 });

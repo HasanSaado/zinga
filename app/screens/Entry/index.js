@@ -12,7 +12,7 @@ import {
 // Components
 import CustomButton from '../../components/Custom/CustomButton';
 
-function Entry({ navigation, route }) {
+function Entry({ navigation }) {
 
   /**
    * 
@@ -39,13 +39,10 @@ function Entry({ navigation, route }) {
           resizeMode={'cover'}
           style={styles.backgroundImage}
         >
-
           <View style={styles.imageContainer}>
             <Image source={require('../../assets/img/logo-full-color.png')} style={styles.image} />
-
             <Image source={require('../../assets/img/zinga-text-black.png')} style={styles.textImage} />
           </View>
-
           <View style={styles.buttonContainer}>
             <CustomButton
               text="Sign Up"
@@ -55,7 +52,6 @@ function Entry({ navigation, route }) {
               height={53}
               onPress={onPressRegister}
             />
-
             <CustomButton
               text="Login"
               backgroundColor="#fff"
@@ -74,7 +70,6 @@ function Entry({ navigation, route }) {
 export default Entry;
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
   },
