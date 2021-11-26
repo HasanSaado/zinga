@@ -13,9 +13,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 // Components
-import CustomButton from '../../components/Custom/CustomButton';
-import CustomInput from '../../components/Custom/CustomInput';
-import Meeting from '../../components/Meeting';
+import CustomButton from '@components/Custom/CustomButton';
+import Meeting from '@components/Meeting';
 
 
 function InterviewRequest({ navigation }) {
@@ -45,18 +44,18 @@ function InterviewRequest({ navigation }) {
             <TouchableOpacity onPress={onPress}>
               <Image
                 style={styles.image}
-                source={require('../../assets/img/user-img.png')}
+                source={require('@assets/img/user-img.png')}
               />
               <Image
                 style={styles.play}
-                source={require('../../assets/img/play-circle.png')}
+                source={require('@assets/img/play-circle.png')}
               />
             </TouchableOpacity>
           </View>
           <View style={styles.positionRow}>
             <Text style={styles.position}>Marketing Manager </Text>
             <Image
-              source={require('../../assets/img/lock-icon.png')}
+              source={require('@assets/img/lock-icon.png')}
               style={styles.lock}
             />
           </View>
@@ -65,14 +64,14 @@ function InterviewRequest({ navigation }) {
             <View style={styles.row}>
               <Image
                 style={styles.flagIcon}
-                source={require('../../assets/img/flag-icon.png')}
+                source={require('@assets/img/flag-icon.png')}
               />
               <Text style={styles.country}> England</Text>
             </View>
             <View style={styles.row}>
               <Image
                 style={styles.pathIcon}
-                source={require('../../assets/img/path-icon.png')}
+                source={require('@assets/img/path-icon.png')}
               />
               <Text style={styles.country}> United Arab Emirates</Text>
             </View>

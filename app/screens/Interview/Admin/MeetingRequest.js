@@ -13,10 +13,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 // Components
-import CustomButton from '../../components/Custom/CustomButton';
-import CustomInput from '../../components/Custom/CustomInput';
-import Meeting from '../../components/Meeting';
-
+import CustomButton from '@components/Custom/CustomButton';
 
 function MeetingRequest({ navigation }) {
 
@@ -45,7 +42,7 @@ function MeetingRequest({ navigation }) {
           <View style={styles.meetingTitle}>
             <Text style={styles.title}>Meeting 1 </Text>
             <Image
-              source={require('../../assets/img/calendar-alt.png')}
+              source={require('@assets/img/calendar-alt.png')}
               style={styles.calendar}
             />
           </View>
@@ -66,7 +63,7 @@ function MeetingRequest({ navigation }) {
               borderColor="#4D4D4D"
               color="#000"
               height={52}
-              onPress={() => navigation.navigate('Meetings', { name: 'Accountant' })}
+              onPress={() => navigation.navigate('ScheduledInterviews', { name: 'Accountant' })}
             />
           </View>
         </View>

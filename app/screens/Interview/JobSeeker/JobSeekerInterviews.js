@@ -13,12 +13,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 // Components
-import CustomButton from '../../components/Custom/CustomButton';
-import CustomInput from '../../components/Custom/CustomInput';
-import Meeting from '../../components/Meeting';
+import CustomButton from '@components/Custom/CustomButton';
 
-
-function UpcomingInterviews({ navigation }) {
+function JobSeekerInterviews({ navigation }) {
 
   /**
    * 
@@ -42,13 +39,13 @@ function UpcomingInterviews({ navigation }) {
       <ScrollView>
         <View style={styles.main}>
           <View style={styles.filter}>
+            <Text style={styles.highlighted}>REQUESTS</Text>
             <Text
               style={styles.filterText}
-              onPress={() => navigation.navigate('JobSeekerInterviews')}
+              onPress={() => navigation.navigate('UpcomingInterviews')}
             >
-              REQUESTS
+              UPCOMING INTERVIEWS
             </Text>
-            <Text style={styles.highlighted}>UPCOMING INTERVIEWS</Text>
             <Text
               style={styles.filterText}
               onPress={() => navigation.navigate('InterviewHistory')}
@@ -60,7 +57,7 @@ function UpcomingInterviews({ navigation }) {
             <TouchableOpacity onPress={onPress}>
               <Image
                 style={styles.image}
-                source={require('../../assets/img/user-img.png')}
+                source={require('@assets/img/user-img.png')}
               />
             </TouchableOpacity>
           </View>
@@ -69,14 +66,39 @@ function UpcomingInterviews({ navigation }) {
             <Text style={styles.infoText}>HR Manager at <Text style={styles.companyName}>Zinga</Text></Text>
             <Text style={styles.position}>Position: Accountant</Text>
           </View>
-          <View style={styles.row}>
-            <View>
-              <Text style={styles.link}>Zoom link</Text>
-              <Text style={styles.date}>March, 2 <Text style={styles.dateDay}>Monday</Text></Text>
-              <Text style={styles.link} onPress={() => navigation.navigate('CancelInterview')}>Cancel Interview</Text>
+          <Text style={styles.link}>Zoom link</Text>
+          <Text style={styles.date}>March, 2 <Text style={styles.dateDay}>Monday</Text></Text>
+          <View style={styles.cardContainer}>
+            <View style={styles.card}>
+              <Text style={styles.meetingTime}>12:30</Text>
             </View>
             <View style={styles.card}>
               <Text style={styles.meetingTime}>12:30</Text>
+            </View>
+            <View style={styles.card}>
+              <Text style={styles.meetingTime}>12:30</Text>
+            </View>
+          </View>
+          <View style={styles.buttonContainer}>
+            <View style={{ width: "48%" }}>
+              <CustomButton
+                text="Accept"
+                backgroundColor="#fff"
+                borderColor="#4D4D4D"
+                color="#000"
+                height={52}
+                onPress={() => navigation.navigate('Meetings', { name: 'Accountant' })}
+              />
+            </View>
+            <View style={{ width: "48%" }}>
+              <CustomButton
+                text="Reject"
+                backgroundColor="#fff"
+                borderColor="#4D4D4D"
+                color="#000"
+                height={52}
+                onPress={() => navigation.navigate('RejectInterview')}
+              />
             </View>
           </View>
         </View>
@@ -85,7 +107,7 @@ function UpcomingInterviews({ navigation }) {
   );
 }
 
-export default UpcomingInterviews;
+export default JobSeekerInterviews;
 
 const styles = StyleSheet.create({
 
@@ -195,15 +217,17 @@ const styles = StyleSheet.create({
     height: 89,
     width: 68,
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#707070",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FEB130"
+    backgroundColor: "#fff"
   },
 
   meetingTime: {
     fontFamily: "QuicksandBold",
     fontSize: 15,
-    color: "#fff"
+    color: "#4D4D4D"
   },
 
   buttonContainer: {
@@ -211,11 +235,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 15
-  },
-
-  row: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
   }
 });

@@ -14,9 +14,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 // Components
-import CustomButton from '../../components/Custom/CustomButton';
-import CustomInput from '../../components/Custom/CustomInput';
-import Meeting from '../../components/Meeting';
+import CustomButton from '@components/Custom/CustomButton';
+import CustomInput from '@components/Custom/CustomInput';
+import Meeting from '@components/Meeting';
 
 
 function CancelInterview({ navigation }) {

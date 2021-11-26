@@ -10,13 +10,6 @@ import {
   ScrollView,
   Switch
 } from "react-native";
-import LinearGradient from 'react-native-linear-gradient';
-
-// Components
-import CustomButton from '../../components/Custom/CustomButton';
-import CustomInput from '../../components/Custom/CustomInput';
-import Meeting from '../../components/Meeting';
-
 
 function InterviewHistory({ navigation }) {
 
@@ -61,7 +54,7 @@ function InterviewHistory({ navigation }) {
             <TouchableOpacity onPress={onPress}>
               <Image
                 style={styles.image}
-                source={require('../../assets/img/user-img.png')}
+                source={require('@assets/img/user-img.png')}
               />
             </TouchableOpacity>
           </View>

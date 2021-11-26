@@ -42,9 +42,7 @@ import CompanyJobs from '../screens/CompanyJobs';
 import Filter from '../screens/Filter';
 import JobInfo from '../screens/JobInfo';
 import EditJob from '../screens/EditJob';
-import InterviewRequest from '../screens/InterviewRequest';
 import Meetings from '../screens/Meetings';
-import MeetingRequest from '../screens/MeetingRequest';
 import LoginEmployee from '../screens/LoginEmployee';
 import RegisterEmployee from '../screens/RegisterEmployee';
 import VerificationEmployee from '../screens/VerificationEmployee';
@@ -71,7 +69,10 @@ import {
   RejectInterview,
   UpcomingInterviews,
   CancelInterview,
-  InterviewHistory
+  InterviewHistory,
+  InterviewRequest,
+  MeetingRequest,
+  ScheduledInterviews
 } from '@screens/Interview';
 
 import {
@@ -534,6 +535,20 @@ function Navigator() {
           component={InterviewHistory}
           options={{
             title: 'Interviews'
+          }}
+        />
+        <Stack.Screen
+          name="ScheduledInterviews"
+          component={ScheduledInterviews}
+          options={{
+            title: 'Accountant',
+            headerRight: () => (
+              <Image
+                onPress={() => alert('filter')}
+                source={require('../assets/img/filter.png')}
+                style={styles.filterIcon}
+              />
+            ),
           }}
         />
         <Stack.Screen
